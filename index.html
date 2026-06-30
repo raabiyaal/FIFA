@@ -12,9 +12,18 @@
     --line:#3a6f6c; --text:#f2f4f5; --muted:#8c9196;
   }
   *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);background-size:cover;background-position:center;background-attachment:fixed;
-    color:var(--text);font-family:"Arial Narrow",Arial,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
-    min-height:100vh;}
+  body{
+    margin:0;
+    background-image:url("background.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    color:var(--text);
+    font-family:"Arial Narrow",Arial,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+}
   body::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.45);pointer-events:none;z-index:-1;}
 
   .topbar{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 16px 6px;flex-wrap:wrap;}
