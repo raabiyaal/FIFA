@@ -53,13 +53,47 @@
   .scaler{margin:0 auto;overflow:hidden;}
   .bracket{display:flex;align-items:stretch;justify-content:center;width:1804px;padding:0 8px;transform-origin:top left;}
   @media (max-width:760px){
-    .scroll{overflow-x:hidden;}
-    .bracket{flex-direction:column;width:auto;max-width:420px;margin:0 auto;transform:none!important;}
-    .bracket .round{min-width:0;width:100%;}
-    .bracket .round.final{order:99;}
-    .match{margin:8px 0;}
-    .name{font-size:14px;}
-  }
+
+    .scroll{
+        overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .bracket{
+        flex-direction:row;
+        width:1804px;
+        transform:none !important;
+    }
+
+    .round{
+        min-width:185px;
+    }
+
+    .round.final{
+        min-width:200px;
+    }
+
+    .match{
+        margin:8px 8px;
+    }
+
+    .team{
+        min-height:50px;
+    }
+
+    .name{
+        font-size:14px;
+    }
+
+    .topbar{
+        width:100%;
+    }
+
+    .tab{
+        flex:1;
+    }
+}
   .round{display:flex;flex-direction:column;justify-content:space-around;flex:1;min-width:185px;}
   .round.final{justify-content:center;min-width:200px;}
   .match{display:flex;flex-direction:column;gap:6px;margin:8px 8px;position:relative;}
