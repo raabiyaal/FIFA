@@ -49,7 +49,12 @@
   .banner.warn b{color:var(--pick);}
 
   /* ---- bracket ---- */
-  .scroll{padding:6px 10px 24px;overflow:hidden;}
+  .scroll{
+    padding:6px 10px 24px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+}
   .scaler{margin:0 auto;overflow:hidden;}
   .bracket{display:flex;align-items:stretch;justify-content:center;width:1804px;padding:0 8px;transform-origin:top left;}
   @media (max-width:760px){
@@ -486,7 +491,19 @@ function fitBracket(containerId, scalerId){
   var bracket=document.getElementById(containerId);
   var scaler=document.getElementById(scalerId);
   var scroll=scaler.parentElement;
-  if(window.innerWidth<=760){ bracket.style.transform=""; scaler.style.width=""; scaler.style.height=""; return; }
+  if(window.innerWidth<=760){
+
+    var scale = Math.max(0.45, scroll.clientWidth / 1804);
+
+    bracket.style.transform = "scale(" + scale + ")";
+    scaler.style.width = (1804 * scale) + "px";
+    scaler.style.height = (900 * scale) + "px";
+
+    scroll.style.overflowX = "auto";
+    scroll.style.overflowY = "hidden";
+
+    return;
+}
   bracket.style.transform="none"; scaler.style.width=""; scaler.style.height="";
   var bb=bracket.getBoundingClientRect();
   var minL=bb.left,maxR=bb.right,minT=bb.top,maxB=bb.bottom;
