@@ -55,15 +55,17 @@
     overflow-y:hidden;
     -webkit-overflow-scrolling:touch;
 }
-  .scaler{margin:0 auto;overflow:hidden;}
+  .scaler{
+    margin:0 auto;
+    overflow:visible;
+}
   .bracket{display:flex;align-items:stretch;justify-content:center;width:1804px;padding:0 8px;transform-origin:top left;}
   @media (max-width:760px){
 
     .scroll{
-        overflow-x:auto;
-        overflow-y:hidden;
-        -webkit-overflow-scrolling:touch;
-    }
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+}
 
     .bracket{
         flex-direction:row;
@@ -493,14 +495,12 @@ function fitBracket(containerId, scalerId){
   var scroll=scaler.parentElement;
   if(window.innerWidth<=760){
 
-    var scale = Math.max(0.45, scroll.clientWidth / 1804);
+    bracket.style.transform = "none";
 
-    bracket.style.transform = "scale(" + scale + ")";
-    scaler.style.width = (1804 * scale) + "px";
-    scaler.style.height = (900 * scale) + "px";
+    scaler.style.width = bracket.scrollWidth + "px";
+    scaler.style.height = bracket.scrollHeight + "px";
 
-    scroll.style.overflowX = "auto";
-    scroll.style.overflowY = "hidden";
+    scroll.style.overflow = "auto";
 
     return;
 }
