@@ -637,15 +637,16 @@ function freshPredictTree(){
 
 // how many open matches still need a pick
 function openMatchesNeeding(tree){
-  var need=0, made=0;
+  var need = tree.ALL.length - Object.keys(officialData).length;
+  var made = 0;
+
   tree.ALL.forEach(function(m){
-    var off=official.byId[m.id];
+    var off = official.byId[m.id];
     var decided = off && off.winner;
-    if(decided) return;        // locked, not the user's to pick
-    if(!m.a || !m.b) return;   // not yet reachable (depends on earlier picks)
-    need++;
-    if(m.winner) made++;
+    if(decided) return;      // don't count matches already decided officially
+    if(m.winner) made++;     // user has picked a winner for this match
   });
+
   return {need:need, made:made};
 }
 function updateCount(){
